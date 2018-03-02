@@ -22,6 +22,7 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
+        player.playVideo();
         // event.target.playVideo();
         // console.log("player", player)
       }
