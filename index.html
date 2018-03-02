@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Dynamic Triggered Ad Serving Demo | Genius Sports Media</title>
+        <meta name="description" content="A webpage for sales to demo Genius Sports Media's dynamic triggered ad serving service.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <header>
+            <div class="header-wrap">
+              <img src="img/logo.svg" alt="Genius Sports Media logo"/>
+            </div>
+        </header>
+        <div class="body-wrap">
+            <h1>Dynamic Creative Video</h1>
+            <div class="demo-wrap">
+                <div class="demo-wrap__video">
+                    <!-- <iframe id="player" width="100%" height="100%" src="https://www.youtube.com/embed/Gq5zx6rzePM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                    <div id="player"></div>
+                </div>
+                <div class="demo-wrap__ad">
+                    <div class="adImgBoxdefault"><img src="img/ads/PREGAME-countdown.gif"></div>
+                    <div class="adImgBox" data-link="act-pre"><img src="img/ads/PREGAME-countdown.gif"></div>
+                    <div class="adImgBox" data-link="act-goal"><img src="img/ads/GOAL-NOTIFICATION-tap-to-connect-ad-animated.gif"></div>
+                    <div class="adImgBox" data-link="act-win"><img src="img/ads/WIN-PROBABILITY-adidas-ad3-animated.gif"></div>
+                    <div class="adImgBox" data-link="act-half"><img src="img/ads/HALFTIME-adidas-ad-4-x2.png"></div>
+                    <div class="adImgBox" data-link="act-post"><img src="img/ads/POSTGAME-adidas-ad-6s-v02x2.png"></div>
+                    <small>Advertisment</small> 
+                </div>
+            </div>
+            <div class="btn-wrap flex--space-between flex--center flex--stretch">
+                <button type="button" data-link="act-pre" id="btn-1" class="link btn btn--reverse" onclick="handleClick(event)">pregame</button>
+                <button type="button" data-link="act-goal" id="btn-2" class="link btn" onclick="handleClick(event)">goal notification</button>
+                <button type="button" data-link="act-win" id="btn-3" class="link btn" onclick="handleClick(event)">win probability</button>
+                <button type="button" data-link="act-half" id="btn-4" class="link btn" onclick="handleClick(event)">halftime</button>
+                <button type="button" data-link="act-post" id="btn-6" class="link btn" onclick="handleClick(event)">post game congrats</button>
+            </div>
+        </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="js/script.js"></script>
+        <!-- <script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js" integrity="{{JQUERY_SRI_HASH}}" crossorigin="anonymous"></script> -->
+        <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script> -->
+        <!-- <script src="js/plugins.js"></script> -->
+        
+
+    </body>
+</html>
