@@ -13,18 +13,25 @@
           height: '100%',
           width: '100%',
           videoId: 'Gq5zx6rzePM',
+          playerVars: {
+            color: 'white',
+            controls: 2,
+            modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+            enablejsapi: 1
+          },
           events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            onReady: 'initialize',
+            onStateChange: 'stateChange'
           }
         });
       }
 
       // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        player.playVideo();
-        // event.target.playVideo();
-        // console.log("player", player)
+      function initialize() {
+        player.mute();
+        stateChange();
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -41,25 +48,25 @@
         let button = event.target.id;
         switch (button) {
           case "btn-1":
-            player.seekTo(0, false);
+            player.seekTo(0);
             break;
           case "btn-2":
-            player.seekTo(955, false);
+            player.seekTo(955);
             break;
           case "btn-3":
-            player.seekTo(1680, false);
+            player.seekTo(1680);
             break;
           case "btn-4":
-            player.seekTo(3170, false);
+            player.seekTo(3170);
             break;
           case "btn-5":
-            player.seekTo(5880, false);
+            player.seekTo(5880);
             break;
           case "btn-6":
-            player.seekTo(6040, false);
+            player.seekTo(6040);
             break;
           default:
-            player.seekTo(0, false);
+            player.seekTo(0);
         }
       }
       function stopVideo() {
