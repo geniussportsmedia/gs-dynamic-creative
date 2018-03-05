@@ -13,6 +13,17 @@ var done = false;
       "height": "100%",
       "width": "100%",
       "videoId": "Gq5zx6rzePM",
+       "playerVars": {
+          "autoplay": 1, // Auto-play the video on load
+          "controls": 1, // Show pause/play buttons in player
+          "showinfo": 0, // Hide the video title
+          "modestbranding": 1, // Hide the Youtube Logo
+          "fs": 1, // Hide the full screen button
+          "cc_load_policy": 0, // Hide closed captions
+          "iv_load_policy": 3, // Hide the Video Annotations
+          "start": 1,
+          "autohide": 1, // Hide video controls when playing
+        },
       "events": {
         "onReady": onPlayerReady
         
