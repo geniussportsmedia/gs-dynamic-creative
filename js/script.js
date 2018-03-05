@@ -1,49 +1,33 @@
-// 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '100%',
-          width: '100%',
-          videoId: 'Gq5zx6rzePM',
-          playerVars: {
-            color: 'white',
-            controls: 2,
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-            enablejsapi: 1
-          },
-          events: {
-            onReady: 'initialize',
-            onStateChange: 'stateChange'
-          }
-        });
+  // This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement("script");
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName("script")[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var done = false;
+  // This function creates an <iframe> (and YouTube player)
+  // after the API code downloads.
+  var player;
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player("player", {
+      "height": "100%",
+      "width": "100%",
+      "videoId": "Gq5zx6rzePM",
+      "events": {
+        "onReady": onPlayerReady
+        
       }
+    });
+  }
 
       // 4. The API will call this function when the video player is ready.
-      function initialize() {
-        player.mute();
-        stateChange();
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        
       }
+   
 
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
+
       function handleClick (event) {
         let button = event.target.id;
         switch (button) {
@@ -51,18 +35,21 @@
             player.seekTo(0);
             break;
           case "btn-2":
-            player.seekTo(955);
+            player.seekTo(987);
+            break;
+          case "btn-2a":
+            player.seekTo(996);
             break;
           case "btn-3":
-            player.seekTo(1680);
+            player.seekTo(1725);
+            break;
+          case "btn-3a":
+            player.seekTo(1741);
             break;
           case "btn-4":
             player.seekTo(3170);
             break;
           case "btn-5":
-            player.seekTo(5880);
-            break;
-          case "btn-6":
             player.seekTo(6040);
             break;
           default:
@@ -84,6 +71,12 @@ $(function () {
         width: '200px'
     }, 300);
   });
+
+  $('.link').click(function(){
+    $('.link.onstate').removeClass('onstate')
+        $(this).addClass('onstate');
+});
 }); //Automatically run these jQuery scripts when the page loads
+
 
 //lols
