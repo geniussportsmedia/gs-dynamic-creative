@@ -16,20 +16,29 @@ $(function() {
     $(this).addClass('onstate');
   });
 
+   $('.gif').click(function() {
+    $(".gifbox").find('img').attr("src", "img/ads/pregame.gif");
+  });
+
   // This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement("script");
-  tag.src = "//www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  var done = false;
+  if(location.protocol.indexOf('file') != -1) {
+   tag.src = "http://www.youtube.com/iframe_api";
+ } else {
+   tag.src = "//www.youtube.com/iframe_api";
+     // or location.protocol  + '//www.youtube.com/iframe_api'
+   }
+   var firstScriptTag = document.getElementsByTagName("script")[0];
+   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+   var done = false;
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
   var player;
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
-      "height": "100%",
+      "height": "445px",
       "width": "100%",
-      "videoId": "Gq5zx6rzePM",
+      "videoId": "KiPyjAOyiNc",
       "playerVars": {
         "autoplay": 1, // Auto-play the video on load
         "controls": 1, // Show pause/play buttons in player
@@ -40,6 +49,7 @@ $(function() {
         "iv_load_policy": 3, // Hide the Video Annotations
         "start": 1,
         "autohide": 1, // Hide video controls when playing
+        "mute": 1,
       },
       "events": {
         "onReady": onPlayerReady
@@ -56,22 +66,22 @@ $(function() {
     let button = event.target.id;
     switch (button) {
       case "btn-1":
-        player.seekTo(0);
-        break;
+      player.seekTo(0);
+      break;
       case "btn-2":
-        player.seekTo(987);
-        break;
+      player.seekTo(15);
+      break;
       case "btn-3":
-        player.seekTo(1725);
-        break;
+      player.seekTo(34);
+      break;
       case "btn-4":
-        player.seekTo(3165);
-        break;
+      player.seekTo(58);
+      break;
       case "btn-5":
-        player.seekTo(6095);
-        break;
+      player.seekTo(70);
+      break;
       default:
-        player.seekTo(0);
+      player.seekTo(0);
     }
   }
 
@@ -80,17 +90,35 @@ $(function() {
   }
 
   var eventTimestamps = {
-    995: 'act-goal2',
-    1736: 'act-win2',
-    3169: 'act-half',
-    6100: 'act-post'
+    15: 'act-goal-pre',
+    23: 'act-goal-1-0',
+    34: 'act-prob',
+    45: 'act-goal-2-0',
+    60: 'act-half',
+    70: 'act-post',
+    73: 'act-end'
   };
 
   setInterval(function () {
     if (eventTimestamps[Math.floor(player.getCurrentTime())]) {
       $('.adImgBox').hide();
       $('.adImgBoxdefault').hide();
-      $('.adImgBox[data-link=' + eventTimestamps[Math.floor(player.getCurrentTime())] + ']').fadeIn({
+
+      if (player.getCurrentTime() > 15 && player.getCurrentTime() < 33 )  {
+        $('.link[data-link=act-pre]').removeClass('onstate');
+        $('.link[data-link=act-goal-pre]').addClass('onstate');
+      } else if (player.getCurrentTime() > 34 && player.getCurrentTime() < 57 )  {
+        $('.link[data-link=act-goal-pre]').removeClass('onstate');
+        $('.link[data-link=act-prob]').addClass('onstate');
+      } else if (player.getCurrentTime() > 58 && player.getCurrentTime() < 69 )  {
+        $('.link[data-link=act-prob]').removeClass('onstate');
+        $('.link[data-link=act-half]').addClass('onstate');
+      } else if (player.getCurrentTime() > 70 )  {
+        $('.link[data-link=act-half]').removeClass('onstate');
+        $('.link[data-link=act-post]').addClass('onstate');
+      }
+      
+      $('.adImgBox[data-link=' + eventTimestamps[Math.floor(player.getCurrentTime())] +  ']').fadeIn({
         width: '200px'
       }, 300);
     }

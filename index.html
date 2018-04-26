@@ -1,62 +1,137 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Dynamic Triggered Ad Serving Demo | Genius Sports Media</title>
-        <meta name="description" content="A webpage for sales to demo Genius Sports Media's dynamic triggered ad serving service.">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://www.youtube.com/iframe_api"></script>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Triggered Ad Serving Demo | Genius Sports Media</title>
+    <meta name="description" content="A webpage for sales to demo Genius Sports Media's dynamic triggered ad serving service.">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/uikit.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.youtube.com/iframe_api"></script>       
+</head>
+<body>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
-
-        <header>
-            <div class="header-wrap">
-              <img src="img/logo.svg" alt="Genius Sports Media logo"/>
-            </div>
-        </header>
-        <div class="body-wrap">
-            <h1>Dynamic Creative Video</h1>
-            <div class="demo-wrap">
-                <div class="demo-wrap__video">
-
-                    <div id="player"></div>
+        <div class="uk-offcanvas-content">
+            <header class="uk-box-shadow-small uk-background-primary uk-light">
+                <div class="uk-container">
+                    <nav class="uk-navbar" id="navbar" data-uk-navbar>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo" href="#"><img src="img/gsm-logo-1000.png"></a>
+                        </div>
+                        
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav uk-visible@m">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Our Products</a></li>
+                            </ul>
+                            <div class="uk-navbar-item">
+                                <a class="uk-navbar-toggle uk-hidden@s" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
+                                <a href="#" class="uk-button uk-button-secondary uk-visible@m">Contact Sales</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-                <div class="demo-wrap__ad">
-                    <div class="adImgBoxdefault"><img src="img/ads/PREGAME-countdown.gif"></div>
-                    <div class="adImgBox" data-link="act-pre"><img src="img/ads/PREGAME-countdown.gif"></div>
-                    <div class="adImgBox" data-link="act-goal"><img src="img/ads/GOAL-NOTIFICATION-tap-to-connect-ad-animated.gif"></div>
-                    <div class="adImgBox" data-link="act-goal2"><img src="img/ads/GOAL-NOTIFICATION-2.png"></div>
-                    <div class="adImgBox" data-link="act-win"><img src="img/ads/WIN-PROBABILITY-adidas-ad3-animated.gif"></div>
-                    <div class="adImgBox" data-link="act-win2"><img src="img/ads/WIN-PROBABILIY-argentina-scores.jpg"></div>
-                    <div class="adImgBox" data-link="act-half"><img src="img/ads/HALFTIME-adidas-ad-4-x2.png"></div>
-                    <div class="adImgBox" data-link="act-post"><img src="img/ads/POSTGAME-adidas-ad-6s-v02x2.png"></div>
-                    <small>Advertisement</small>
-                    <div id="timeHolder"></div>
+            </header>
+            <section class="uk-section uk-section-muted uk-light uk-background-cover  " style="background-image: url('img/page-background.jpg')">
+                <div class="uk-container">
+                    <header class="uk-text-center">
+                        <h2 style="margin-bottom: 35px;">Dynamic Advertising &amp; Sports Trigger Demo</h2>
+                        <hr>
+                    </header>
+
+                    
+                    <div class="uk-flex" uk-grid>
+                        <div class="uk-width-2-3@m uk-flex-first">
+                            <div id="player"></div>
+                        </div>
+                        <div class="uk-width-1-3@m">
+                            <!-- Default State -->
+                            <div class="adImgBoxdefault" data-link="default"><img src="img/ads/pregame.gif"></div>
+                            <!-- Pregame -->
+                            <div class="adImgBox gifbox" data-link="act-pre"><img src="img/ads/pregame.gif"></div>
+                            <!-- Pre Goal 1 -->
+                            <div class="adImgBox" data-link="act-goal-pre"><img src="img/ads/goal-pre.png"></div>
+                            <!-- Goal 1 -->
+                            <div class="adImgBox" data-link="act-goal-1-0"><img src="img/ads/goal-1-0.png"></div>
+                            <!-- Goal Probability -->
+                            <div class="adImgBox" data-link="act-prob"><img src="img/ads/prob.png"></div>
+                            <!-- Goal 2 -->
+                            <div class="adImgBox" data-link="act-goal-2-0"><img src="img/ads/goal-2-0.png"></div>
+                            <!-- Halftime -->
+                            <div class="adImgBox" data-link="act-half"><img src="img/ads/halftime.png"></div>
+                            <!-- Post Game -->
+                            <div class="adImgBox" data-link="act-post"><img src="img/ads/post.png"></div>
+                            <div class="adImgBox" data-link="act-end"><img src="img/ads/end.png"></div>
+                            <small>Advertisement</small>
+                            <div id="timeHolder"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+        <section id="more" class="uk-section uk-section-primary uk-section-xsmall">
+            <div class="uk-container" style="text-align: center;">
+                <button type="button" data-link="act-pre" id="btn-1" class="link btn uk-button uk-button-default uk-button-large onstate gif" onclick="handleClick(event)">pregame</button>
+                <button type="button" data-link="act-goal-pre" id="btn-2" class="link btn uk-button uk-button-default uk-button-large" onclick="handleClick(event)">goal notification</button>
+                <button type="button" data-link="act-prob" id="btn-3" class="link btn uk-button uk-button-default uk-button-large" onclick="handleClick(event)">goal notification 2</button>
+                <button type="button" data-link="act-half" id="btn-4" class="link btn uk-button uk-button-default uk-button-large" onclick="handleClick(event)">halftime</button>
+                <button type="button" data-link="act-post" id="btn-5" class="link btn uk-button uk-button-default uk-button-large" onclick="handleClick(event)">post game congrats</button>
+            </div>
+        </section>
+
+        <!--FOOTER-->
+        <footer class="uk-section-secondary">
+            <div class="uk-section uk-section-xsmall" style="background-color: rgba(0,0,0,0.15)">
+                <div class="uk-container">
+                    <div class="uk-grid uk-child-width-1-2@s uk-text-center uk-text-left@s" data-uk-grid>
+                        <div class="uk-text-small uk-text-muted">
+                            Copyright &copy; 2018 Genius Sports Group Limited - All rights reserved.
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <div class="btn-wrap flex--space-between flex--center flex--stretch">
-                <button type="button" data-link="act-pre" id="btn-1" class="link btn" onclick="handleClick(event)">pregame</button>
-                <button type="button" data-link="act-goal" id="btn-2" class="link btn" onclick="handleClick(event)">goal notification</button>
-                <button type="button" data-link="act-win" id="btn-3" class="link btn" onclick="handleClick(event)">goal prediction</button>
-                <button type="button" data-link="act-win2" id="btn-4" class="link btn" onclick="handleClick(event)">halftime</button>
-                <button type="button" data-link="act-win2" id="btn-5" class="link btn" onclick="handleClick(event)">post game congrats</button>
+        </footer>
+        <!--/FOOTER-->
+
+
+        <!-- OFFCANVAS -->
+        <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
+            <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
+                <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
+                <ul class="uk-nav uk-nav-default">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li class="uk-parent">
+                        <a href="#">Parent</a>
+                        <ul class="uk-nav-sub">
+                            <li><a href="#">Sub item</a></li>
+                            <li><a href="#">Sub item</a></li>
+                        </ul>
+                    </li>
+                    <li class="uk-nav-header">Header</li>
+                    <li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
+                    <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
+                </ul>
+                <h3>Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-        <script src="js/script.js"></script>
-        <!-- <script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script> -->
-        <!-- <script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js" integrity="{{JQUERY_SRI_HASH}}" crossorigin="anonymous"></script> -->
-        <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script> -->
-        <!-- <script src="js/plugins.js"></script> -->
-
-
-    </body>
+        <!-- /OFFCANVAS -->
+    </div>
+    <!-- JS FILES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/plugins.js"></script>
+</body>
 </html>
