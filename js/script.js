@@ -1,5 +1,6 @@
 $(function() {
   $('.adImgBox').hide();
+  $(".gifbox").find('img').attr("src", "img/ads/pregame.gif");
 
   $('.link').click(clickCallback);
 
@@ -50,6 +51,7 @@ $(function() {
         "start": 1,
         "autohide": 1, // Hide video controls when playing
         "mute": 1,
+        "rel": 0
       },
       "events": {
         "onReady": onPlayerReady
