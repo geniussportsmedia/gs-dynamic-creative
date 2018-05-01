@@ -19,3 +19,16 @@ body {
 	border: red solid 2px!important;
 }
 
+#player {
+	border: 1px #194291 solid;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+}
+
+.adholder {
+	border: 1px #194291 solid;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+}

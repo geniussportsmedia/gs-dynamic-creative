@@ -1,6 +1,6 @@
 $(function() {
   $('.adImgBox').hide();
-  $(".gifbox").find('img').attr("src", "img/ads/pregame.gif");
+  $(".gifbox").find('img').attr("src", "img/ads/pregame.gif"); 
 
   $('.link').click(clickCallback);
 
@@ -37,11 +37,12 @@ $(function() {
   var player;
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
-      "height": "445px",
+      "height": "444px",
       "width": "100%",
-      "videoId": "KiPyjAOyiNc",
+      "videoId": "CHHb-dd03fU",
       "playerVars": {
         "autoplay": 1, // Auto-play the video on load
+        "disablekb": 1,
         "controls": 1, // Show pause/play buttons in player
         "showinfo": 0, // Hide the video title
         "modestbranding": 1, // Hide the Youtube Logo
@@ -68,19 +69,22 @@ $(function() {
     let button = event.target.id;
     switch (button) {
       case "btn-1":
-      player.seekTo(0);
+      player.seekTo(7);
       break;
       case "btn-2":
-      player.seekTo(15);
+      player.seekTo(24);
       break;
       case "btn-3":
-      player.seekTo(34);
+      player.seekTo(46);
       break;
       case "btn-4":
-      player.seekTo(58);
+      player.seekTo(70);
       break;
       case "btn-5":
-      player.seekTo(70);
+      player.seekTo(91);
+      break;
+      case "btn-6":
+      player.seekTo(117);
       break;
       default:
       player.seekTo(0);
@@ -92,13 +96,19 @@ $(function() {
   }
 
   var eventTimestamps = {
-    15: 'act-goal-pre',
-    23: 'act-goal-1-0',
-    34: 'act-prob',
-    45: 'act-goal-2-0',
-    60: 'act-half',
-    70: 'act-post',
-    73: 'act-end'
+    0: 'default',
+    7: 'act-pre', // Pregame Pizza Hut
+    25: 'act-goal-1-pre', // Fanatics Pre Goal
+    32: 'act-goal-1-0',
+    46: 'act-goal-2-pre', // Fubo Pre Goal 2
+    57: 'act-goal-2-0',
+    70: 'act-half-pre', // Coke Halftime
+    79: 'act-half',
+    91: 'act-pred-01', // McDonalds Pre Goal 3
+    95: 'act-pred-02',
+    103: 'act-pred-03',
+    117: 'act-post', // Stubhub Pre
+    127: 'act-end' 
   };
 
   setInterval(function () {
@@ -106,19 +116,26 @@ $(function() {
       $('.adImgBox').hide();
       $('.adImgBoxdefault').hide();
 
-      if (player.getCurrentTime() > 15 && player.getCurrentTime() < 33 )  {
+
+      if (player.getCurrentTime() > 7 && player.getCurrentTime() < 24 )  {
+        $('.link[data-link=act-pre]').addClass('onstate');
+      } else if (player.getCurrentTime() > 25 && player.getCurrentTime() < 45 )  {
         $('.link[data-link=act-pre]').removeClass('onstate');
         $('.link[data-link=act-goal-pre]').addClass('onstate');
-      } else if (player.getCurrentTime() > 34 && player.getCurrentTime() < 57 )  {
+      } else if (player.getCurrentTime() > 46 && player.getCurrentTime() < 69 )  {
         $('.link[data-link=act-goal-pre]').removeClass('onstate');
-        $('.link[data-link=act-prob]').addClass('onstate');
-      } else if (player.getCurrentTime() > 58 && player.getCurrentTime() < 69 )  {
-        $('.link[data-link=act-prob]').removeClass('onstate');
-        $('.link[data-link=act-half]').addClass('onstate');
-      } else if (player.getCurrentTime() > 70 )  {
-        $('.link[data-link=act-half]').removeClass('onstate');
+        $('.link[data-link=act-goal-2-pre]').addClass('onstate');
+      } else if (player.getCurrentTime() > 70 && player.getCurrentTime() < 90 )  {
+        $('.link[data-link=act-goal-2-pre]').removeClass('onstate');
+        $('.link[data-link=act-half-pre]').addClass('onstate');
+      } else if (player.getCurrentTime() > 91 && player.getCurrentTime() < 116  )  {
+        $('.link[data-link=act-half-pre]').removeClass('onstate');
+        $('.link[data-link=act-pred-01]').addClass('onstate');
+      } else if (player.getCurrentTime() > 117 )  {
+        $('.link[data-link=act-pred-01]').removeClass('onstate');
         $('.link[data-link=act-post]').addClass('onstate');
       }
+
       
       $('.adImgBox[data-link=' + eventTimestamps[Math.floor(player.getCurrentTime())] +  ']').fadeIn({
         width: '200px'
